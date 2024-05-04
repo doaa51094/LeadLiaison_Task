@@ -35,15 +35,16 @@ const Card = () => {
   }, [category]);
   return (
     <>
+   
       {loading ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-5 mt-12 " >
-            {[...Array(6)].map((_, index) => (
-              <div   key={index}>
-                <SkeletonCard />
-              </div>
-            ))}
-              
-        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-5 mt-12" >
+        {[...Array(6)].map((_, index) => (
+          <div className=""   key={index}>
+            <SkeletonCard />
+          </div>
+        ))}
+          
+    </div>
   ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-5 mt-12 ">
           {Products?.length > 0 ? (
