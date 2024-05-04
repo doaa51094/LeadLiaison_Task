@@ -30,12 +30,12 @@ const ProductDetails = () => {
     
       }, []);
   return (
-    <div className="w-full flex justify-center items-center h-screen shadow-md">
-     <div className="flex justify-between items-center border border-gray-200 w-[88%] p-12 shadow rounded-[10px]">
-     <div className="w-[25%] justify-center items-center">
+    <div className="w-full flex justify-center items-center lg:h-screen shadow-md">
+     <div className="lg:flex justify-between items-center  lg:border border-gray-200 lg:w-[88%] w-[90%] lg:p-12 lg:shadow lg:rounded-[10px]">
+     <div className="lg:w-[25%] justify-center items-center lg:mb-0 mb-3">
         <img src={product.image} alt={product.title} className="w-full h-full"/>{" "}
       </div>
-      <div className="w-[60%]">
+      <div className="lg:w-[60%]">
          <p className="font-light text-[25px]  text-[#6c7885]"><span className="font-semibold">Title : </span>{product.title}</p>
         <p className="font-light text-[25px]  text-[#6c7885]"> <span  className="font-semibold">Category : </span>{product.category}</p>
          <p className="font-light text-[25px]  text-[#6c7885]"><span  className="font-semibold">Description : </span>{product.description}</p>
