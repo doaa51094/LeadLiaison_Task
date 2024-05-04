@@ -36,9 +36,11 @@ const Card = () => {
   return (
     <>
       {loading ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-5 mt-12 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-5 mt-12 " >
             {Products?.map((ele) => (
-              <SkeletonCard />
+              <div   key={ele.id}>
+                <SkeletonCard />
+              </div>
             ))}
               
         </div>

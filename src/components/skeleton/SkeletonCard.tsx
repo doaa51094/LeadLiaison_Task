@@ -2,7 +2,7 @@ import { Skeleton } from 'primereact/skeleton';
 
 const SkeletonCard = () => {
   return (
-    <div className="">
+    <div>
   
               <Skeleton shape="rectangle" width="100%" height="150px" />
               <Skeleton width="50%"  className="mt-2" />
