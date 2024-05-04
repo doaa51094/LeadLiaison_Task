@@ -46,8 +46,8 @@ const Card = () => {
         </div>
   ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-5 mt-12 ">
-          {Products.length > 0 ? (
-            Products.map((ele) => (
+          {Products?.length > 0 ? (
+            Products?.map((ele) => (
               <Link
                 to={`/product/${ele?.id}`}
                 className=" flex flex-col  items-center gap-5 hover:border border-gray-200 rounded-[10px] py-2 hover:shadow-md"

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { getSingleProduct } from "../../Data";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Skeleton } from "primereact/skeleton";
-
+import img from "../../assets/turn-back.png";
 interface Product {
   id: number;
   title: string;
@@ -54,7 +54,17 @@ const ProductDetails = () => {
           </div>
         </div>
       ) : (
-        <div className="w-full flex justify-center items-center lg:min-h-screen shadow-md lg:py-0 py-5">
+        <div className="w-full flex flex-col justify-center items-center lg:min-h-screen shadow-md lg:py-0 py-5">
+          <div className="lg:w-[88%] w-[90%] h-[50px] mt-3">
+            <Link to={"/"}>
+              <img
+                src={img}
+                alt="back button"
+                className="lg:w-[50px] w-[40px] p-2 rounded-md bg-black"
+              />
+            </Link>
+          </div>
+
           <div className="lg:flex justify-between items-center  lg:border border-gray-200 lg:w-[88%] w-[90%] lg:p-12 lg:shadow lg:rounded-[10px]">
             <div className="lg:w-[30%]  p-9 w-full bg-red flex justify-center items-center lg:mb-0 mb-3">
               <img
@@ -64,20 +74,22 @@ const ProductDetails = () => {
               />
             </div>
             <div className="lg:w-[60%]">
-              <p className="font-light text-[25px]  text-[#6c7885]">
-                <span className="font-semibold">Title : </span>
+            <span className="font-semibold  text-[25px] ">Title : </span>
+              <p className="font-light text-[18px]  text-[#6c7885]">
+                
                 {product?.title}
               </p>
-              <p className="font-light text-[25px]  text-[#6c7885]">
-                <span className="font-semibold">Category : </span>
+              <span className="font-semibold  text-[25px] ">Category : </span>
+              <p className="font-light text-[18px]  text-[#6c7885]">
                 {product?.category}
               </p>
-              <p className="font-light text-[25px]  text-[#6c7885]">
-                <span className="font-semibold">Description : </span>
+              <span className="font-semibold  text-[25px] ">Description : </span>
+              <p className="font-light text-[18px]  text-[#6c7885]">
                 {product?.description}
               </p>
-              <p className="font-light text-[25px]  text-[#6c7885]">
-                <span className="font-semibold">Price : </span>
+              <span className="font-semibold  text-[25px] ">Price : </span>
+
+              <p className="font-light text-[18px]  text-[#6c7885]">
                 {product?.price}
               </p>
             </div>
