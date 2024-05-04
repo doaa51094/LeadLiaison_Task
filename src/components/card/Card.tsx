@@ -37,8 +37,8 @@ const Card = () => {
     <>
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-5 mt-12 " >
-            {Products?.map((ele) => (
-              <div   key={ele.id}>
+            {[...Array(6)].map((_, index) => (
+              <div   key={index}>
                 <SkeletonCard />
               </div>
             ))}
@@ -46,31 +46,36 @@ const Card = () => {
         </div>
   ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-5 mt-12 ">
-          {Products?.map((ele) => (
-            <Link
-              to={`/product/${ele?.id}`}
-              className=" flex flex-col  items-center gap-5 hover:border border-gray-200 rounded-[10px] py-2 hover:shadow-md"
-              key={ele.id}
-            >
-              <div className="w-[200px]  h-[210px] object-cover">
-                <img
-                  src={ele?.image}
-                  alt={ele?.title}
-                  className="w-full h-full"
-                />
-              </div>
-              <div className="w-[200px]">
-                <h3 className="text-black text-lg leading-5 font-medium">
-                  {ele?.category}
-                </h3>
-                <p className="line-clamp-2 text-gray-500">{ele?.title}</p>
-              </div>
-            </Link>
-          ))}
+          {Products.length > 0 ? (
+            Products.map((ele) => (
+              <Link
+                to={`/product/${ele?.id}`}
+                className=" flex flex-col  items-center gap-5 hover:border border-gray-200 rounded-[10px] py-2 hover:shadow-md"
+                key={ele.id}
+              >
+                <div className="w-[200px]  h-[210px] object-cover">
+                  <img
+                    src={ele?.image}
+                    alt={ele?.title}
+                    className="w-full h-full"
+                  />
+                </div>
+                <div className="w-[200px]">
+                  <h3 className="text-black text-lg leading-5 font-medium">
+                    {ele?.category}
+                  </h3>
+                  <p className="line-clamp-2 text-gray-500">{ele?.title}</p>
+                </div>
+              </Link>
+            ))
+          ) : (
+            <p>No products found</p>
+          )}
         </div>
       )}
     </>
   );
+
 };
 
 export default Card;
