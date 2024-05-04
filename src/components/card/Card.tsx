@@ -4,6 +4,7 @@ import { RootState } from "../../redux/store";
 import { fetchInCategory, fetchProducts } from "../../Data";
 import { setLoading } from "../../redux/features/dataSlice";
 import { Link } from "react-router-dom";
+import SkeletonCard from "../skeleton/SkeletonCard";
 interface Product {
   id: number;
   title: string;
@@ -35,13 +36,18 @@ const Card = () => {
   return (
     <>
       {loading ? (
-        <div>Loading...</div>
-      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-5 mt-12 ">
+            {Products?.map((ele) => (
+              <SkeletonCard />
+            ))}
+              
+        </div>
+  ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-5 mt-12 ">
           {Products?.map((ele) => (
             <Link
               to={`/product/${ele?.id}`}
-              className=" flex flex-col  items-center gap-5 hover:border border-gray-400 rounded-[10px] py-2 hover:shadow-md"
+              className=" flex flex-col  items-center gap-5 hover:border border-gray-200 rounded-[10px] py-2 hover:shadow-md"
               key={ele.id}
             >
               <div className="w-[200px]  h-[210px] object-cover">
