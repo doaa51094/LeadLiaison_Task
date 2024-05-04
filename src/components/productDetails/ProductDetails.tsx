@@ -56,7 +56,7 @@ const ProductDetails = () => {
       ) : (
         <div className="w-full flex justify-center items-center lg:min-h-screen shadow-md lg:py-0 py-5">
           <div className="lg:flex justify-between items-center  lg:border border-gray-200 lg:w-[88%] w-[90%] lg:p-12 lg:shadow lg:rounded-[10px]">
-            <div className="lg:w-[20%] w-[80%] m-auto justify-center items-center lg:mb-0 mb-3">
+            <div className="lg:w-[30%]  p-9 w-full bg-red flex justify-center items-center lg:mb-0 mb-3">
               <img
                 src={product?.image}
                 alt={product?.title}
