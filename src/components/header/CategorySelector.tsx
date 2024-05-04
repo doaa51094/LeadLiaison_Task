@@ -7,29 +7,33 @@ interface Category {
 }
 const CategorySelector = () => {
   const [categories, setCategories] = useState<string[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
   const dispatch = useDispatch();
   const selectCategory = (data: Category) => {
-    dispatch(
-      setCategory(data.category)
-    );
+    setSelectedCategory(data.category);
+    dispatch(setCategory(data.category));
   };
-    useEffect(() => {
-      fetchCategories().then((data) => {
-        setCategories(data);
-      });
-          }, []);
+  useEffect(() => {
+    fetchCategories().then((data) => {
+      setCategories(data);
+    });
+  }, []);
   return (
     <div className="flex lg:flex-row flex-col gap-4">
-    {categories?.map((category) => (
-       <button
-       key={category}
-       className="px-3 capitalize whitespace-nowrap h-[40px] w-full border border-gray-300 rounded-[5px] shadow-sm focus:bg-black focus:text-gray-100 text-black text-base"
-       onClick={() => selectCategory({ category })}
-     >
-       {category}
-     </button>
+      {categories?.map((category) => (
+        <button
+          key={category}
+          className={`px-3 capitalize whitespace-nowrap h-[40px] w-full border border-gray-300 rounded-[5px] shadow-sm  text-black text-base ${
+            selectedCategory === category ? "bg-black text-gray-100" : ""
+          }`}
+          onClick={() => selectCategory({ category })}
+        >
+          {category}
+        </button>
       ))}
-    </div>  )
-}
+    </div>
+  );
+};
 
-export default CategorySelector
+export default CategorySelector;

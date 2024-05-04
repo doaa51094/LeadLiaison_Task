@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { fetchInCategory, fetchProducts } from "../../Data";
-import { setLoading } from "../../redux/features/dataSlice";
 import { Link } from "react-router-dom";
 import SkeletonCard from "../skeleton/SkeletonCard";
 interface Product {
@@ -16,20 +15,21 @@ interface Product {
 
 const Card = () => {
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState<boolean>(true);
   const [Products, setProducts] = useState<Product[]>([]);
-  const { category, loading } = useSelector((state: RootState) => state);
+  const { category } = useSelector((state: RootState) => state);
 
   useEffect(() => {
-    dispatch(setLoading(true));
+    setLoading(true);
     if (category === "All") {
       fetchProducts().then((data) => {
         setProducts(data);
-        dispatch(setLoading(false));
+        setLoading(false);
       });
     } else {
       fetchInCategory(category).then((data) => {
         setProducts(data);
-        dispatch(setLoading(false));
+        setLoading(false);
       });
     }
   }, [category]);
